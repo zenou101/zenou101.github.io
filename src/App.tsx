@@ -15,7 +15,6 @@ import {
   SlidersHorizontal,
   Star,
   Tag,
-  Users,
   X,
 } from "lucide-react";
 import {
@@ -27,7 +26,6 @@ import {
   pins,
   profileUrl,
   selectRepos,
-  totals,
   verifiedSite,
   webUrl,
   type Category,
@@ -36,6 +34,8 @@ import {
   type Sort,
 } from "./model";
 import { useCatalog } from "./useCatalog";
+import { LegalPage, parseRoute, type Route } from "./Legal";
+import { Wordmark } from "./Wordmark";
 
 const format = new Intl.DateTimeFormat("en", {
   month: "short",
@@ -52,14 +52,6 @@ const languages: Record<string, string> = {
   Python: "#80acd6",
   CSS: "#ad8fe2",
 };
-function Wordmark() {
-  return (
-    <span className="wordmark">
-      <img src="/favicon.svg" width="30" height="30" alt="" />
-      Zenou<span className="wordmark-period">.</span>
-    </span>
-  );
-}
 function Header() {
   const [open, setOpen] = useState(false);
   const [section, setSection] = useState("home");
@@ -137,15 +129,17 @@ function Hero() {
             Developer portfolio
           </p>
           <h1 id="hero-title">
-            Building things
+            Websites
             <br />
-            for the web
+            and Windows apps,
             <br />
-            <em>and beyond.</em>
+            <em>source included.</em>
           </h1>
           <p className="intro">
-            I’m Zenou. I build websites, apps and tools, experimenting with new
-            ideas and improving them along the way.
+            I’m Zenou. I made ZenouMath, a browser hub for maths practice, games
+            and everyday tools, and FrameLab, a Windows app that records frame
+            times while you play. The repository list below is pulled from
+            GitHub.
           </p>
           <div className="actions">
             <a className="button primary" href="#projects">
@@ -494,7 +488,7 @@ function Dialog({
     </dialog>
   );
 }
-export default function App() {
+function Portfolio() {
   const { snapshot, details, status, retry } = useCatalog();
   const [query, setQuery] = useState(""),
     [category, setCategory] = useState<Category>("All"),
@@ -505,13 +499,6 @@ export default function App() {
     .map((p) => repos.find((r) => p.names.includes(r.name.toLowerCase())))
     .filter((r): r is Repo => !!r);
   const matches = selectRepos(repos, query, category, sort);
-  const metrics = snapshot ? totals(snapshot) : [];
-  const stats = [
-    { label: "Public repositories", Icon: FolderGit2 },
-    { label: "Repository stars", Icon: Star },
-    { label: "Repository forks", Icon: GitFork },
-    { label: "GitHub followers", Icon: Users },
-  ];
   return (
     <>
       <a href="#projects" className="skip">
@@ -563,17 +550,6 @@ export default function App() {
                 <h2 id="hub-title">Repository hub</h2>
               </div>
             </div>
-            <dl className="stats">
-              {stats.map(({ label, Icon }, i) => (
-                <div key={label}>
-                  <dt>
-                    <Icon size={16} />
-                    {label}
-                  </dt>
-                  <dd>{metrics[i]?.toLocaleString() ?? "—"}</dd>
-                </div>
-              ))}
-            </dl>
             <div className="search-row">
               <label className="search">
                 <Search size={18} />
@@ -692,13 +668,18 @@ export default function App() {
                 <i />
                 About
               </div>
-              <h2>Hey, I’m Zenou.</h2>
+              <h2>What I work on</h2>
             </div>
             <div>
               <p>
-                I like building things I can use, from a home for browser games
-                to a way to see how my PC handles them. Web development and
-                desktop software give me plenty of ideas to experiment with.
+                ZenouMath is written in HTML, JavaScript and CSS; FrameLab is
+                written in TypeScript and Rust. Both are maintained in public,
+                with the source and release notes on GitHub.
+              </p>
+              <p>
+                Names, descriptions, languages, stars, forks and release tags on
+                this page come from the public GitHub API. Nothing is collected
+                from visitors.
               </p>
               <a className="text-link" href={profileUrl}>
                 <Github size={16} />
@@ -712,7 +693,11 @@ export default function App() {
         <div className="wrap">
           <Wordmark />
           <span>Developer portfolio</span>
-          <a href="#home">Back to top</a>
+          <div className="footer-links">
+            <a href="#/privacy">Privacy</a>
+            <a href="#/terms">Terms</a>
+            <a href="#home">Back to top</a>
+          </div>
         </div>
       </footer>
       {selected && (
@@ -725,4 +710,28 @@ export default function App() {
       )}
     </>
   );
+}
+
+function useRoute() {
+  const [route, setRoute] = useState<Route>(() => parseRoute(location.hash));
+  useEffect(() => {
+    const sync = () => setRoute(parseRoute(location.hash));
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, []);
+  useEffect(() => {
+    document.title =
+      route === "privacy"
+        ? "Privacy policy · Zenou"
+        : route === "terms"
+          ? "Terms and conditions · Zenou"
+          : "Zenou · Developer Portfolio & Projects";
+    if (route !== "home") window.scrollTo(0, 0);
+  }, [route]);
+  return route;
+}
+
+export default function App() {
+  const route = useRoute();
+  return route === "home" ? <Portfolio /> : <LegalPage kind={route} />;
 }
