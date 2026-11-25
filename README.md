@@ -4,7 +4,7 @@ A personal developer portfolio and searchable index of [Zenou’s public reposit
 
 ## Explore
 
-- Featured projects pair public GitHub metadata with a short editorial introduction. ZenouMath uses its official logo. FrameLab shows the real performance overview from its project repository.
+- Featured projects pair public GitHub metadata with a short editorial introduction. ZenouMath uses its official logo, while FrameLab and Veyra show real screenshots from their project repositories.
 - The repository hub searches names, descriptions, languages and topics. Visitors can filter by project type or sort by update date, stars, name and creation date.
 - A project panel shows languages, last push, latest published stable release when available, and links to the README, source and verified website.
 - Public repository, star and fork totals include every fetched page. The follower count comes from the public GitHub user record.
@@ -47,4 +47,4 @@ The target repository is **zenou101/zenou101.github.io**. In **Settings → Page
 
 ## Project imagery
 
-[ZenouMath logo](https://github.com/zenou101/zenoumath/blob/main/assets/logo-192.png) · [FrameLab screenshot](https://github.com/zenou101/framelab/blob/main/site/public/screenshots/overview-dark.webp). The purple Z illustration and sharing artwork were made for this portfolio.
+[ZenouMath logo](https://github.com/zenou101/zenoumath/blob/main/assets/logo-192.png) · [FrameLab screenshot](https://github.com/zenou101/framelab/blob/main/site/public/screenshots/overview-dark.webp) · [Veyra screenshot](https://github.com/zenou101/veyra/blob/main/site/assets/display.png). The purple Z illustration and sharing artwork were made for this portfolio.
