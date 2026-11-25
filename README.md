@@ -39,7 +39,7 @@ On pushes, manual dispatches and a six-hour schedule, the Pages workflow runs th
 
 ## Project selection
 
-Edit `pins` in `src/model.ts` to curate the featured order, summaries and known official sites. A pin appears only while a matching public repository exists. The category for ZenouMath and FrameLab follows their own READMEs. For other repositories the classifier checks tool topics, application topics, then website topics, a Pages repository name or an HTML primary language. Unmatched repositories appear under Other. A documentation homepage alone does not classify an application as a website.
+Edit `pins` in `src/model.ts` to curate the featured order, summaries and known official sites. A pin appears only while a matching public repository exists. The categories for ZenouMath, FrameLab and Veyra follow their own READMEs. For other repositories the classifier checks tool topics, application topics, then website topics, a Pages repository name or an HTML primary language. Unmatched repositories appear under Other. A documentation homepage alone does not classify an application as a website.
 
 ## Deploy
 
