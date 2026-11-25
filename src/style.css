@@ -711,6 +711,11 @@ h1 em {
 }
 .about .text-link {
   width: max-content;
+}
+.about-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
   margin-top: 12px;
 }
 footer {

@@ -137,9 +137,9 @@ function Hero() {
           </h1>
           <p className="intro">
             I’m Zenou. I made ZenouMath, a browser hub for maths practice, games
-            and everyday tools, and FrameLab, a Windows app that records frame
-            times while you play. The repository list below is pulled from
-            GitHub.
+            and everyday tools, FrameLab, a Windows app that records frame times
+            while you play, and Veyra, a Windows display and colour tool. The
+            repository list below is pulled from GitHub.
           </p>
           <div className="actions">
             <a className="button primary" href="#projects">
@@ -694,19 +694,28 @@ function Portfolio() {
             </div>
             <div>
               <p>
-                ZenouMath is written in HTML, JavaScript and CSS; FrameLab is
-                written in TypeScript and Rust. Both are maintained in public,
-                with the source and release notes on GitHub.
+                ZenouMath is written in HTML, JavaScript and CSS, FrameLab in
+                TypeScript and Rust, and Veyra in C#. All three are maintained
+                in public, with the source and release notes on GitHub.
               </p>
               <p>
                 Names, descriptions, languages, stars, forks and release tags on
                 this page come from the public GitHub API. Nothing is collected
                 from visitors.
               </p>
-              <a className="text-link" href={profileUrl}>
-                <Github size={16} />
-                @zenou101
-              </a>
+              <div className="about-links">
+                <a className="text-link" href={profileUrl}>
+                  <Github size={16} />
+                  @zenou101
+                </a>
+                <a
+                  className="text-link"
+                  href="https://zenou101.github.io/veyra/"
+                >
+                  <Globe2 size={16} />
+                  Veyra website
+                </a>
+              </div>
             </div>
           </section>
         </div>
