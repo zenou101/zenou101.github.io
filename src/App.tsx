@@ -212,6 +212,18 @@ function CardArt({ repo }: { repo: Repo }) {
         />
       </div>
     );
+  if (art === "veyra")
+    return (
+      <div className="cover veyra-cover" aria-hidden="true">
+        <img
+          src="/media/veyra.png"
+          width="1180"
+          height="780"
+          alt=""
+          loading="lazy"
+        />
+      </div>
+    );
   return (
     <div className="cover generic-cover">
       <FolderGit2 aria-hidden="true" size={58} />
@@ -423,6 +435,16 @@ function Dialog({
             src="/media/framelab.webp"
             width="1336"
             height="868"
+            loading="lazy"
+          />
+        )}
+        {pin?.art === "veyra" && (
+          <img
+            className="detail-shot"
+            alt="Veyra’s Display page in dark mode"
+            src="/media/veyra.png"
+            width="1180"
+            height="780"
             loading="lazy"
           />
         )}

@@ -45,7 +45,7 @@ export type Pin = {
   category?: Category;
   summary?: string;
   website?: string;
-  art?: "math" | "frame";
+  art?: "math" | "frame" | "veyra";
 };
 export const pins: Pin[] = [
   {
@@ -67,7 +67,15 @@ export const pins: Pin[] = [
     art: "frame",
   },
   { names: ["zenou-unblocked", "zenouunblocked"], title: "Zenou Unblocked" },
-  { names: ["veyra"], title: "Veyra" },
+  {
+    names: ["veyra"],
+    title: "Veyra",
+    category: "Applications",
+    summary:
+      "A Windows display and colour tool: per-display saturation, calibrated colour controls and a crosshair, with every change reversible.",
+    website: "https://zenou101.github.io/veyra/",
+    art: "veyra",
+  },
 ];
 export const pinFor = (r: Repo) =>
   pins.find((p) => p.names.includes(r.name.toLowerCase()));

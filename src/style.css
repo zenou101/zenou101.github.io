@@ -446,6 +446,27 @@ h1 em {
   border-radius: 4px;
   box-shadow: 2px 6px 20px #000a;
 }
+.veyra-cover {
+  background-color: #091420;
+  background-image: radial-gradient(
+    ellipse at 50% 0%,
+    #1c4a6b66,
+    transparent 72%
+  );
+  place-items: start center;
+}
+.veyra-cover img {
+  margin-top: 6.4%;
+  width: 78%;
+  height: auto;
+  transform: perspective(900px) rotateY(5deg) rotateZ(2deg);
+  transform-origin: center top;
+  border: 1px solid #2b5875;
+  border-radius: 5px;
+  box-shadow:
+    0 8px 26px #000a,
+    0 0 0 1px #4cc2ff22;
+}
 .generic-cover {
   color: #a595dd;
   background: #201d2c;
